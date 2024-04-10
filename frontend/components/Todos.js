@@ -29,7 +29,7 @@ export default function Todo() {
             })
             .map(todo => (
               <StyledTodo 
-                onClick={dispatch(toggleTodo(todo.id))} 
+                onClick={() => dispatch(toggleTodo(todo.id))} 
                 $complete={todo.complete} 
                 key={todo.id}>
                 <span>{todo.label}{todo.complete && ' ✔️'}</span>

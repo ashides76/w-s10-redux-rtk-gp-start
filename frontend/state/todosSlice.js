@@ -21,11 +21,20 @@ export const todosSlice = createSlice({
         toggleTodo: (state, action) => {
             let todo = state.todos.find(td => td.id === action.payload)
             todo.complete = !todo.complete
+        },
+        createNewTodo: {
+            prepare(label, complete) {
+                return {payload: {id: getNextId(), label, complete}}
+            },
+            reducer(state, action) {
+                state.todos.push(action.payload)
+            }
         }
     }
 })
 
 export const {
+    createNewTodo,
     toggleShowCompletedTodos,
     toggleTodo,
 } = todosSlice.actions
