@@ -17,12 +17,17 @@ export const todosSlice = createSlice({
         toggleShowCompletedTodos: state => {
             // return { ...state, showCompletedTodos: !state.showCompletedTodos }
             state.showCompletedTodos = !state.showCompletedTodos
+        },
+        toggleTodo: (state, action) => {
+            let todo = state.todos.find(td => td.id === action.payload)
+            todo.complete = !todo.complete
         }
     }
 })
 
 export const {
     toggleShowCompletedTodos,
+    toggleTodo,
 } = todosSlice.actions
 
 export default todosSlice.reducer
